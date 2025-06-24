@@ -19,11 +19,10 @@
     <br><br>
     <img id="imagem" src="desligada.png" alt="LED" style="width: 200px; height: 200px; border-radius: 100px;">
 
-    <h2>Horários em que o LED foi ligado</h2>
-    <canvas id="grafico" width="600" height="300"></canvas>
+    <h2 style="margin-top: 8%;">Horários em que o LED foi ligado</h2>
+    <canvas id="grafico" width="300" height="50"></canvas>
 
     <script>
-        // 🔧 Configuração Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyAdHhHzspajzkLWGZk01-FzSHPj8-rgyB4",
             authDomain: "esp32-3ce2b.firebaseapp.com",
@@ -44,7 +43,6 @@
         const contH = document.getElementById("contador");
         const body = document.getElementById("body");
 
-        // Função de controle do LED
         function ligarDesligar() {
             if (botao.textContent === "Ligar LED") {
                 database.ref("led").set({ state: 1 });
@@ -53,7 +51,6 @@
                 img.src = "ligada.png";
                 body.style.backgroundColor = "white";
 
-                // Incrementa contador e salva no histórico
                 contador++;
                 contH.textContent = `Ligado ${contador} vezes`;
                 const timestamp = new Date().toISOString();
@@ -69,7 +66,6 @@
             }
         }
 
-        // Inicializa contador a partir do histórico
         database.ref("historico").once("value", (snapshot) => {
             contador = snapshot.numChildren();
             contH.textContent = `Ligado ${contador} vezes`;
