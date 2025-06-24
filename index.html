@@ -17,10 +17,12 @@
         style="cursor: pointer; padding: 10px 20px; font-size: 16px; background-color: green; border: none; border-radius: 20px;">Ligar
         LED</button>
     <br><br>
-    <img id="imagem" src="desligada.png" alt="LED" style="width: 200px; height: 200px; border-radius: 100px;">
+    <div id="central">
+        <img id="imagem" src="desligada.png" alt="LED" style="width: 200px; height: 200px; border-radius: 100px;">
 
-    <h2 style="margin-top: 8%;">Horários em que o LED foi ligado</h2>
-    <canvas id="grafico" width="300" height="50"></canvas>
+        <h2 style="margin-top: 8%;">Horários em que o LED foi ligado</h2>
+        <canvas id="grafico" width="300" height="50"></canvas>
+    </div>
 
     <script>
         const firebaseConfig = {
@@ -42,6 +44,7 @@
         const img = document.getElementById("imagem");
         const contH = document.getElementById("contador");
         const body = document.getElementById("body");
+        const central = document.getElementById("central")
 
         function ligarDesligar() {
             if (botao.textContent === "Ligar LED") {
@@ -50,6 +53,7 @@
                 botao.style.backgroundColor = "red";
                 img.src = "ligada.png";
                 body.style.backgroundColor = "white";
+                central.style.display = "block";
 
                 contador++;
                 contH.textContent = `Ligado ${contador} vezes`;
@@ -62,7 +66,7 @@
                 botao.style.backgroundColor = "green";
                 img.src = "desligada.png";
                 body.style.backgroundColor = "black";
-
+                central.style.display = "none";
             }
         }
 
