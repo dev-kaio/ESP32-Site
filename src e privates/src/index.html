@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Controle do LED</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+</head>
+
+<body id="body" style="font-family: Arial; text-align: center; margin-top: 50px; background-color: black;">
+
+    <h1>Controle do LED via Firebase</h1>
+    <h3 id="contador">Ligado 0 vezes</h3>
+    <button onclick="ligarDesligar()" id="btn"
+        style="cursor: pointer; padding: 10px 20px; font-size: 16px; background-color: green; border: none; border-radius: 20px;">Ligar
+        LED</button>
+    <br><br>
+    <div id="central">
+        <img id="imagem" src="desligada.png" alt="LED" style="width: 200px; height: 200px; border-radius: 100px;">
+
+        <h2 style="margin-top: 8%;">Horários em que o LED foi ligado</h2>
+        <canvas id="grafico" width="300" height="50"></canvas>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
